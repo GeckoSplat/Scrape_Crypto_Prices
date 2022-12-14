@@ -30,8 +30,10 @@ def coin_price(): # Connects to API and retrieves information
             symbol = entry["symbol"]# symbol is BTC etc
             name = entry["name"] # Full string name ie : Bitcoin
             price = entry ["quote"] # quote holds all price info
-            print(symbol ,name , '£',price[(list(price.keys())[0])]["price"],'\n') # selects first item in dict "quote" after
-            #converting to a list. This displays only the price information required.
+
+            print(symbol ,name , '£',price[(list(price.keys())[0])]["price"],'Percent UP/DOWN 24hrs:',
+            price[(list(price.keys())[0])]["percent_change_24h"],'\n') # selects first item in dict "quote" after
+            #converting to a list. This displays only the information required.
 
     except (ConnectionError, Timeout, TooManyRedirects) as e: # Error handling
         print(e)
