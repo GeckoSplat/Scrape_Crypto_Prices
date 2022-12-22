@@ -1,5 +1,5 @@
 # Scrape_Crypto_Prices
-## Python Script to scrape crypto coin prices from the Coinmarketcap.com API.
+## This is a Python tool to get crypto coin prices from Coinmarketcap.com using an API key to fetch data.
 
 Clone this repo.
 
