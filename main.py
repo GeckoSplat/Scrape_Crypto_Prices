@@ -25,7 +25,7 @@ def query_prices(parameters: dict, headers: dict, URL: str) -> dict:
 def print_prices(query_data: dict):
     # For each coin / token
     for entry in query_data:
-
+    
         # Symbol e.g BTC
         symbol = entry.get("symbol", None)
 
@@ -49,7 +49,7 @@ def print_prices(query_data: dict):
         )
 
 
-if __name__ == "__main__":
+def connect_API():
 
     API_KEY: str
 
@@ -57,13 +57,12 @@ if __name__ == "__main__":
         config = json.load(file)
         API_KEY = config.get("apikey", None)
 
-
     # Points to the API interface
-    URL = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest"
+    URL = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest" # v1 better for this query type
 
     parameters = {
         "start": "1",
-        "limit": "20",  # change here to display more / less coins . Max 5000
+        "limit": "20",  # change here to display more / less coins . Max 200
         "convert": "GBP",  # change 'GBP' to currency of your choice
     }
     headers = {"Accepts": "application/json", "X-CMC_PRO_API_KEY": API_KEY}
@@ -75,3 +74,7 @@ if __name__ == "__main__":
         print_prices(data.get("data"))
     else:
         print("Failed to retrieve data")
+
+
+if __name__ == "__main__":
+    connect_API()
